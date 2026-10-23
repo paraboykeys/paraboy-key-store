@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10121b">
+<title>PC Games | PARABOY Key Store</title>
+<style>
+:root {
+  --bg: #10121b;
+  --panel: #1c2030;
+  --text: #f5f6ff;
+  --muted: #b8bfd5;
+  --accent: #91a1ff;
+  --border: #343a50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  padding: 24px 16px;
+  text-align: center;
+  background: #191d2c;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  color: var(--accent);
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+header p { color: var(--muted); }
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 14px;
+  background: #151827;
+}
+a { color: var(--accent); }
+nav a { text-decoration: none; }
+main {
+  width: min(1100px, 100%);
+  padding: 24px 16px;
+  margin: auto;
+}
+.hero {
+  padding: 25px 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #252c4b, #1b1e30);
+  margin-bottom: 24px;
+}
+.hero h1 { margin-top: 0; }
+.hero p, .muted { color: var(--muted); }
+.controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+input, select {
+  width: 100%;
+  padding: 13px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 16px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.game-art {
+  min-height: 95px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #292f49;
+  font-size: 38px;
+}
+.tag {
+  display: inline-block;
+  align-self: flex-start;
+  background: #303754;
+  color: #d9deff;
+  border-radius: 20px;
+  padding: 5px 9px;
+  font-size: 12px;
+}
+.card h2 { font-size: 19px; margin: 4px 0; }
+.price { font-size: 23px; font-weight: bold; }
+button, .button {
+  display: inline-block;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 15px;
+  background: var(--accent);
+  color: #10121b;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.card button { margin-top: auto; }
+.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.note {
+  background: #292638;
+  border: 1px solid #514763;
+  border-radius: 10px;
+  padding: 14px;
+  color: #e7dff7;
+  margin-top: 24px;
+}
+footer {
+  text-align: center;
+  padding: 25px 16px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+@media (min-width: 650px) {
+  .controls { grid-template-columns: 2fr 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">PARABOY KEY STORE</div>
+  <p>PC Game Keys • Digital Gaming Store</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="games.html">PC Games</a>
+  <a href="#catalogue">Catalogue</a>
+</nav>
+
+<main>
+  <section class="hero">
+    <h1>Find Your Next Game</h1>
+    <p>Browse PC games and check availability before ordering.</p>
+    <a class="button" href="#catalogue">Browse Games</a>
+  </section>
+
+  <section id="catalogue">
+    <h2>PC Game Catalogue</h2>
+    <p class="muted">Prices shown are examples, not confirmed offers.</p>
+
+    <div class="controls">
+      <input id="search" type="search"
+        placeholder="Search games..."
+        aria-label="Search games">
+      <select id="category" aria-label="Filter by category">
+        <option value="all">All categories</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="sports">Sports</option>
+        <option value="indie">Indie</option>
+      </select>
+    </div>
+
+    <div id="games" class="grid"></div>
+    <p id="empty" hidden>No games match your search.</p>
+  </section>
+
+  <div class="note">
+    <strong>Before you order</strong>
+    <p>Confirm the price, platform, region, and stock with the store.
+    Only purchase authorized game keys from legitimate sources.
+    No online payment or automatic key delivery is enabled yet.</p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 PARABOY Key Store</p>
+  <a href="index.html">Back to Home</a>
+</footer>
+
+<script>
+const games = [
+  {
+    name: "Example Action Game",
+    category: "action",
+    price: 499,
+    platform: "PC",
+    icon: "🎮"
+  },
+  {
+    name: "Example Adventure Game",
+    category: "adventure",
+    price: 699,
+    platform: "PC",
+    icon: "🗺️"
+  },
+  {
+    name: "Example Sports Game",
+    category: "sports",
+    price: 899,
+    platform: "PC",
+    icon: "🏆"
+  },
+  {
+    name: "Example Indie Game",
+    category: "indie",
+    price: 299,
+    platform: "PC",
+    icon: "👾"
+  }
+];
+
+const gameContainer = document.getElementById("games");
+const searchInput = document.getElementById("search");
+const categoryInput = document.getElementById("category");
+const emptyMessage = document.getElementById("empty");
+
+function renderGames() {
+  const term = searchInput.value.trim().toLowerCase();
+  const category = categoryInput.value;
+
+  const filtered = games.filter(game =>
+    game.name.toLowerCase().includes(term) &&
+    (category === "all" || game.category === category)
+  );
+
+  gameContainer.replaceChildren();
+
+  filtered.forEach(game => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const art = document.createElement("div");
+    art.className = "game-art";
+    art.textContent = game.icon;
+    art.setAttribute("aria-hidden", "true");
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = game.category.toUpperCase();
+
+    const title = document.createElement("h2");
+    title.textContent = game.name;
+
+    const platform = document.createElement("p");
+    platform.className = "muted";
+    platform.textContent = game.platform + " • Availability to be confirmed";
+
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = "₹" + game.price.toLocaleString("en-IN");
+
+    const button = document.createElement("button");
+    button.textContent = "Check Availability";
+    button.addEventListener("click", () => {
+      alert(
+        "Selected: " + game.name +
+        "\nExample price: ₹" + game.price +
+        "\nPlease configure store contact details before accepting orders."
+      );
+    });
+
+    card.append(art, tag, title, platform, price, button);
+    gameContainer.appendChild(card);
+  });
+
+  emptyMessage.hidden = filtered.length !== 0;
+}
+
+searchInput.addEventListener("input", renderGames);
+categoryInput.addEventListener("change", renderGames);
+renderGames();
+</script>
+</body>
+</html>
